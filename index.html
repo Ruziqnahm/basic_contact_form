@@ -1,40 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <title>Contact Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Contact Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <form id="form">
-        <h1>test</h1>
-        <div>
-            <label for="name">Name</label></br>
-            <input id="name" name="name">
+  <main class="page">
+    <section class="card">
+      <header class="card-header">
+        <div class="brand">
+          <!-- Simple inline logo -->
+          <svg class="logo" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="6" fill="#4F46E5" />
+            <path d="M6 12h12M6 8h8M6 16h6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="brand-text">
+            <h1>Contact Me</h1>
+          </div>
         </div>
-        <div>
-            <label for="email">Email</label><br>
-            <input type="email" id="email" name="email">
-        </div>
-        <div>
-            <label for="message">Message</label><br>
-            <textarea id="message" name="message"></textarea>
-        </div>
-        <div id="buttons-row">
-            <div class="buttons">
-                <button type="submit" id="send">Send</button>
-            </div>
-            <div class="buttons">
-                <button id="reset">Reset</button>
-            </div>
-        </div>
-    </form>
-    <script src="app.js"></script>
-</body>
+      </header>
 
+      <form id="form" class="contact-form" novalidate>
+        <div class="field">
+          <label for="name">
+            <!-- user icon -->
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 12a4 4 0 100-8 4 4 0 000 8z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M4 20a8 8 0 0116 0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Name
+          </label>
+          <input id="name" name="name" placeholder="Your full name" required />
+        </div>
+
+        <div class="field">
+          <label for="email">
+            <!-- envelope icon -->
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M3 7.5l9 6 9-6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+              <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.2" />
+            </svg>
+            Email
+          </label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="field">
+          <label for="message">
+            <!-- message icon -->
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Message
+          </label>
+          <textarea id="message" name="message" placeholder="Write your message" required></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="submit" id="send" class="btn primary">
+            <!-- paper plane icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M22 2L11 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M22 2L15 22l-4-9-9-4 20-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Send
+          </button>
+          <button type="reset" id="reset" class="btn secondary">
+            <!-- reset icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M21 12a9 9 0 10-3.95 7.03" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M21 3v6h-6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Reset
+          </button>
+        </div>
+      </form>
+
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
 </html>
 
