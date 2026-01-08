@@ -1,64 +1,95 @@
-form {
-    background-color: black;
-    width: 500px;
-    border-radius: 25px;
-    height: 400px;
-    padding: 25px;
-    font-family: Arial, Helvetica, sans-serif;
-    box-sizing: border-box;
-    margin: 50px auto 50px;
-
+:root{
+  --bg: #282a2c;
+  --card: #ffffff;
+  --accent: #4F46E5; /* indigo */
+  --accent-2: #06B6D4; /* teal */
+  --muted: #6b7280;
+  --border: #e6eef8;
 }
 
-form h1 {
-    color: white;
-    text-align: center;
-    font-size: 22px;
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background:linear-gradient(180deg,var(--bg), #eef6fb 80%);
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  color:#0f172a;
 }
 
-label {
-    color: rgb(43, 134, 209);
-    font-weight: bold;
-    padding-bottom: 5px;
-    padding-top: 15px;
-    display: inline-block;
+.page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 16px;
 }
 
-input,
-textarea {
-    box-sizing: border-box;
-    width: 450px;
-    height: 30px;
-    padding-left: 5px;
-    font-family: Arial, Helvetica, sans-serif;
+.card{
+  width:100%;
+  max-width:640px;
+  background:var(--card);
+  border-radius:14px;
+  box-shadow:0 8px 30px rgba(20,24,64,0.08);
+  padding:28px;  transition:transform .18s ease, box-shadow .18s ease;
+  will-change: transform, box-shadow;
 }
 
-textarea {
-    height: 50px;
+/* Slight lift and grow when any form control is focused */
+.card:focus-within{
+  transform:translateY(-6px) scale(1.01);
+  box-shadow:0 20px 40px rgba(20,24,64,0.16);}
+
+.card-header{display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.brand{display:flex;align-items:center;gap:8px;flex-direction:column}
+.logo{border-radius:8px;flex:0 0 56px}
+.brand-text h1{margin:0;font-size:20px;font-weight:600;text-align:center}
+.subtitle{margin:6px 0 0;color:var(--muted);font-size:13px;text-align:center}
+
+.contact-form{display:block}
+.field{margin-top:14px}
+.field:first-of-type{margin-top:8px}
+label{display:flex;align-items:center;gap:8px;font-weight:600;color:#0f172a;margin-bottom:8px}
+.icon{color:var(--accent-2);flex:0 0 18px}
+
+input,textarea{
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:linear-gradient(180deg,#f9f9f9,#ffffff);
+  font-size:14px;
+  color:#0f172a;
+  transition:box-shadow .18s ease, border-color .12s ease, transform .12s ease;
 }
 
-#buttons-row {
-    display: flex;
-    justify-content: space-evenly;
+/* lift the focused field a bit for motion feedback */
+.field:focus-within input, .field:focus-within textarea {
+  transform:translateY(-3px) scale(1.01);
+  box-shadow:0 10px 30px rgba(79,70,229,0.08);
+  border-color:var(--accent);
 }
 
-button {
-    flex-grow: 1;
-    width: 125px;
-    margin: 25px;
-    border: none;
-    border-radius: 15px;
-    height: 35px;
-    font-size: 20px;
-}
+input:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 4px 18px rgba(79,70,229,0.12);transform:translateY(-1px)}
+textarea{min-height:110px;resize:vertical}
 
-button#send {
-    background-color: rgb(211, 59, 59);
-    color: white;
-}
+.actions{display:flex;gap:12px;align-items:center;margin-top:20px}
+.btn{display:inline-flex;align-items:center;gap:8px;justify-content:center;padding:10px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:600;font-size:15px;transition:transform .08s ease, box-shadow .12s ease}
+.btn svg{display:inline-block}
+.btn:active{transform:translateY(1px)}
 
-button#reset {
-    background-color: rgb(253, 253, 54);
-    color: black;
+.btn.primary{background:linear-gradient(90deg,var(--accent),#7c3aed);color:rgb(18, 17, 17);box-shadow:0 6px 18px rgba(79,70,229,0.18)}
+.btn.primary:hover{filter:brightness(.98)}
+
+.btn.secondary{background:transparent;border:1px solid var(--border);color:var(--muted)}
+.btn.secondary:hover{background:#0c0c0c}
+
+/* Responsive tweaks */
+@media (max-width:420px){
+  .card{padding:18px}
+  .brand-text h1{font-size:18px}
+  label{font-size:14px}
+  .btn{font-size:14px;padding:10px}
 }
 
