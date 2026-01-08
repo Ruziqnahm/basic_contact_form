@@ -1,40 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
     <meta charset="UTF-8">
+    <title>Basic Contact Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <title>Contact Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #007bff;
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        #message-status {
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
 </head>
-
 <body>
-    <form id="form">
-        <h1>test</h1>
-        <div>
-            <label for="name">Name</label></br>
-            <input id="name" name="name">
-        </div>
-        <div>
-            <label for="email">Email</label><br>
-            <input type="email" id="email" name="email">
-        </div>
-        <div>
-            <label for="message">Message</label><br>
-            <textarea id="message" name="message"></textarea>
-        </div>
-        <div id="buttons-row">
-            <div class="buttons">
-                <button type="submit" id="send">Send</button>
-            </div>
-            <div class="buttons">
-                <button id="reset">Reset</button>
-            </div>
-        </div>
+
+<div class="container">
+    <h2>Contact Form</h2>
+
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Nama Lengkap">
+        <input type="email" id="email" placeholder="Email">
+        <textarea id="message" placeholder="Pesan"></textarea>
+        <button type="submit">Kirim</button>
     </form>
-    <script src="app.js"></script>
+
+    <div id="message-status"></div>
+</div>
+
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+        const status = document.getElementById("message-status");
+
+        status.className = "";
+        status.innerHTML = "";
+
+        // Validasi field kosong
+        if (name === "" || email === "" || message === "") {
+            status.classList.add("error");
+            status.innerHTML = "Semua field wajib diisi!";
+            return;
+        }
+
+        // Validasi format email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            status.classList.add("error");
+            status.innerHTML = "Format email tidak valid!";
+            return;
+        }
+
+        // Validasi panjang pesan
+        if (message.length < 10) {
+            status.classList.add("error");
+            status.innerHTML = "Pesan minimal 10 karakter!";
+            return;
+        }
+
+        // Jika valid
+        status.classList.add("success");
+        status.innerHTML = "Pesan berhasil divalidasi (belum dikirim).";
+
+        // Reset form (opsional)
+        document.getElementById("contactForm").reset();
+    });
+</script>
+
 </body>
-
 </html>
-
