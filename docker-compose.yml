@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  contact-form:
+    image: ruziqna/basic_contact_form:latest
+    container_name: contact-form-app
+    ports:
+      - "1986:80"
+    restart: unless-stopped
